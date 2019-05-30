@@ -19,6 +19,11 @@ test("ExtXKey AES-128", () => {
   expect(extXKey.print(1)).toBe(`#EXT-X-KEY:METHOD=AES-128,URI="http://www.example.com/key"`);
 });
 
+test("ExtXKey AES-128", () => {
+  const extXKey = new ExtXKey("AES-128", "http://www.example.com/key");
+  expect(extXKey.print(5)).toBe(`#EXT-X-KEY:METHOD=AES-128,URI="http://www.example.com/key"`);
+});
+
 test("ExtXKey AES-128 with IV, version < 2", () => {
   const extXKey = new ExtXKey("AES-128", "http://www.example.com/key", "0123456789ABCDEF");
   expect(extXKey.print(1)).toBe(`#EXT-X-KEY:METHOD=AES-128,URI="http://www.example.com/key"`);
