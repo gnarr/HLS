@@ -1,0 +1,70 @@
+{
+  "name": "hls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/Hls.js",
+  "types": "dist/Hls.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "tslint -c tslint.json src/*.ts --fix --format verbose --project tsconfig.json",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+  },
+  "files": [
+    "dist/Hls.js",
+    "dist/Hls.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnarr/HLS.git"
+  },
+  "author": "Gunnar Cortes Heimisson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnarr/HLS/issues"
+  },
+  "homepage": "https://github.com/gnarr/HLS#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "coveralls": "^3.0.3",
+    "jest": "^24.8.0",
+    "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "mapCoverage": true
+  }
+}
