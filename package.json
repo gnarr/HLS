@@ -64,7 +64,6 @@
       "ts",
       "js",
       "json"
-    ],
-    "mapCoverage": true
+    ]
   }
 }
