@@ -13,6 +13,6 @@ export default class ExtInf {
     if (this.title) {
       tags.push(`[${this.title}]`);
     }
-    return `#EXTINF:${tags.join(",")}`;
+    return `#EXTINF:${tags.join(",")},`;
   }
 }
