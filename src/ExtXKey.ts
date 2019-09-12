@@ -1,6 +1,7 @@
 export type EncryptionMethod = "NONE" | "AES-128" | "SAMPLE-AES";
 
 export default class ExtXKey {
+  private version!: number;
   private method!: EncryptionMethod;
   private uri?: string;
   private iv?: string;
@@ -8,12 +9,14 @@ export default class ExtXKey {
   private keyformatversions?: number[];
 
   public constructor(
+    version: number,
     method: EncryptionMethod,
     uri?: string,
     iv?: string,
     keyformat?: string,
     keyformatversions?: number[]
   ) {
+    this.version = version;
     if (method !== "NONE" && uri === undefined) {
       throw new Error("URI is REQUIRED unless the METHOD is NONE.");
     }
@@ -24,17 +27,17 @@ export default class ExtXKey {
     this.keyformatversions = keyformatversions;
   }
 
-  public print(version: number) {
+  public toString() {
     const attributes: string[] = [];
     attributes.push(`METHOD=${this.method}`);
     if (this.method !== "NONE") {
       attributes.push(`URI="${this.uri}"`);
-      if (version >= 2) {
+      if (this.version >= 2) {
         if (this.iv) {
           attributes.push(`IV=${this.iv}`);
         }
       }
-      if (version >= 5) {
+      if (this.version >= 5) {
         if (this.keyformat) {
           attributes.push(`KEYFORMAT="${this.keyformat}"`);
         }
