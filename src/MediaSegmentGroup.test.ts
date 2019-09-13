@@ -11,7 +11,6 @@ test("segment", () => {
         i,
         `/path/to/segment${i}.ts`,
         { duration: 4, title: `segment ${i}` },
-        { },
         false
       )
     );
@@ -59,8 +58,8 @@ test("segment", () => {
         i,
         `/path/to/segment.ts`,
         { duration: 4, title: `segment` },
-        { byterange: 18, byteoffset: 18 * i },
-        false
+        false,
+        { length: 18, offset: 18 * i }
       )
     );
   }

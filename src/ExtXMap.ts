@@ -1,18 +1,22 @@
+import ByteRange from './ByteRange';
+
 export default class ExtXMap {
   private uri!: string;
-  private byterange?: string;
+  private byterange?: ByteRange;
 
-  public constructor(uri: string, byterange?: string) {
+  public constructor(uri: string, byterange?: { length: number, offset?: number }) {
     this.uri = uri;
-    this.byterange = byterange;
+    if (byterange) {
+      this.byterange = new ByteRange(byterange.length, byterange.offset);
+    }
   }
 
   public toString() {
     const attributeList: string[] = [];
-    attributeList.push(`"${this.uri}"`);
+    attributeList.push(`URI="${this.uri}"`);
     if (this.byterange) {
-      attributeList.push(`"${this.byterange}"`);
+      attributeList.push(`BYTERANGE="${this.byterange}"`);
     }
-    return `#EXT-X-MAP:${attributeList.join("")}`;
+    return `#EXT-X-MAP:${attributeList.join(",")}`;
   }
 }

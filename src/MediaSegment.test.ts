@@ -5,8 +5,8 @@ test("segment", () => {
     0,
     "/path/to/segment.ts",
     { duration: 4, title: "First segment" },
-    { byterange: 18, byteoffset: 12 },
-    false
+    false,
+    { length: 18, offset: 12 }
   );
   const playlist = `${segment}`;
   expect(playlist).toBe(`#EXT-X-BYTERANGE:18[@12]

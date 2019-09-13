@@ -1,23 +1,18 @@
+import ByteRange from "./ByteRange";
+
 export default class ExtXByterange {
   private version!: number;
-  private byterange?: number;
-  private byteoffset?: number;
+  private byteRange!: ByteRange;
 
-  public constructor(version: number, byterange?: number, byteoffset?: number) {
+  public constructor(version: number, length: number, offset?: number) {
     this.version = version;
-    this.byterange = byterange;
-    this.byteoffset = byteoffset;
+    this.byteRange = new ByteRange(length, offset);
   }
 
   public toString() {
-    if (this.version < 4 || !this.byterange) {
+    if (this.version < 4 || !this.byteRange) {
       return "";
     }
-    const tags: string[] = [];
-    tags.push(`${this.byterange}`);
-    if (this.byteoffset) {
-      tags.push(`[@${this.byteoffset}]`);
-    }
-    return `#EXT-X-BYTERANGE:${tags.join("")}`;
+    return `#EXT-X-BYTERANGE:${this.byteRange}`;
   }
 }
