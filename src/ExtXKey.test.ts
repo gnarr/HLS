@@ -1,4 +1,5 @@
 import ExtXKey from "./ExtXKey";
+
 /*  tslint:disable: max-line-length */
 
 test("ExtXKey NONE", () => {
@@ -9,7 +10,7 @@ test("ExtXKey NONE", () => {
 test("ExtXKey AES-128 and no URI", () => {
   expect(() => {
     const extXKey = new ExtXKey(1, "AES-128");
-    `${extXKey}`;
+    extXKey.toString();
   }).toThrowError(new Error("URI is REQUIRED unless the METHOD is NONE."));
 });
 
