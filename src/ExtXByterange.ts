@@ -1,15 +1,17 @@
 export default class ExtXByterange {
+  private version!: number;
   private byterange?: number;
   private byteoffset?: number;
 
-  public constructor(byterange?: number, byteoffset?: number) {
+  public constructor(version: number, byterange?: number, byteoffset?: number) {
+    this.version = version;
     this.byterange = byterange;
     this.byteoffset = byteoffset;
   }
 
-  public print(version: number) {
-    if (version < 4 || !this.byterange) {
-      return undefined;
+  public toString() {
+    if (this.version < 4 || !this.byterange) {
+      return "";
     }
     const tags: string[] = [];
     tags.push(`${this.byterange}`);

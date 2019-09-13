@@ -1,15 +1,17 @@
 export default class ExtInf {
+  private version!: number;
   private duration!: number;
   private title?: string;
 
-  public constructor(duration: number, title?: string) {
+  public constructor(version: number, duration: number, title?: string) {
+    this.version = version;
     this.duration = duration;
     this.title = title;
   }
 
-  public print(version: number) {
+  public toString() {
     const tags: string[] = [];
-    tags.push(`${version < 3 ? Math.round(this.duration) : this.duration}`);
+    tags.push(`${this.version < 3 ? Math.round(this.duration) : this.duration}`);
     if (this.title) {
       tags.push(`[${this.title}]`);
     }

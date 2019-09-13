@@ -1,21 +1,21 @@
 import ExtXByterange from "./ExtXByterange";
 
 test("ExtXByterange without byteoffset, version < 4", () => {
-  const extXByterange = new ExtXByterange(20);
-  expect(extXByterange.print(1)).toBe(undefined);
+  const extXByterange = new ExtXByterange(1, 20);
+  expect(`${extXByterange}`).toBe("");
 });
 
 test("ExtXByterange without byteoffset, version >= 4", () => {
-  const extXByterange = new ExtXByterange(20);
-  expect(extXByterange.print(5)).toBe("#EXT-X-BYTERANGE:20");
+  const extXByterange = new ExtXByterange(5, 20);
+  expect(`${extXByterange}`).toBe("#EXT-X-BYTERANGE:20");
 });
 
 test("ExtXByterange with byteoffset, version < 4", () => {
-  const extXByterange = new ExtXByterange(20, 18);
-  expect(extXByterange.print(1)).toBe(undefined);
+  const extXByterange = new ExtXByterange(1, 20, 18);
+  expect(`${extXByterange}`).toBe("");
 });
 
 test("ExtXByterange with byteoffset, version >= 4", () => {
-  const extXByterange = new ExtXByterange(20, 18);
-  expect(extXByterange.print(5)).toBe("#EXT-X-BYTERANGE:20[@18]");
+  const extXByterange = new ExtXByterange(5, 20, 18);
+  expect(`${extXByterange}`).toBe("#EXT-X-BYTERANGE:20[@18]");
 });

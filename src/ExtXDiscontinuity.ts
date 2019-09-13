@@ -4,9 +4,9 @@ export default class ExtXDiscontinuity {
     this.discontinuity = discontinuity;
   }
 
-  public print() {
+  public toString() {
     if (!this.discontinuity) {
-      return undefined;
+      return "";
     }
     return `#EXT-X-DISCONTINUITY`;
   }
