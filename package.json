@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/gnarr/HLS#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.13",
+    "@types/jest": "^26.0.21",
     "@types/node": "^12.0.2",
     "coveralls": "^3.0.3",
     "jest": "^24.8.0",
